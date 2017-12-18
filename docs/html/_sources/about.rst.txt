@@ -15,6 +15,13 @@ provides a wrapper for the much older (when first appeared) nauty_ algorithm.
 License
 -------
 
+.. warning::
+    This license is only valid for pysaucy itself. It does not apply to the source code
+    of saucy which is not included in this software package. To use pysaucy, saucy
+    has to be obtained from the authors and the license under which saucy is made
+    available must be acknowledged separately.
+
+
 MIT License
 
 Copyright (c) 2017 Fabian Ball
