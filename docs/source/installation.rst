@@ -10,7 +10,7 @@ Installation follows the standard procedure (:py:mod:`setuptools` required):
 
 .. hint::
    If an error occurs, read the description carefully. Often, missing header files (e.g. from Python) are a
-   cause for the error. If e.g. ``saucy.h`` cannot be found, make sure saucy is sources are not located in
+   cause for the error. If e.g. ``saucy.h`` cannot be found, make sure saucy's sources are not located in
    some deeper subdirectory.
 
 .. note::
