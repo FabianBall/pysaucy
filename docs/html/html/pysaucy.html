@@ -1,0 +1,261 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>pysaucy &#8212; pysaucy 0.3.1b documentation</title>
+    <link rel="stylesheet" href="_static/classic.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '0.3.1b',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <link rel="author" title="About these documents" href="about.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="pysaucy.examples" href="examples.html" />
+    <link rel="prev" title="Modules" href="modules.html" /> 
+  </head>
+  <body>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             accesskey="I">index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="pysaucy.examples"
+             accesskey="N">next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Modules"
+             accesskey="P">previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysaucy 0.3.1b documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" accesskey="U">Modules</a> &#187;</li> 
+      </ul>
+    </div>  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pysaucy">
+<h1>pysaucy<a class="headerlink" href="#pysaucy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="module-pysaucy">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-pysaucy" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="pysaucy.Graph">
+<em class="property">class </em><code class="descclassname">pysaucy.</code><code class="descname">Graph</code><span class="sig-paren">(</span><em>adjacency_list</em>, <em>directed=False</em><span class="sig-paren">)</span><a class="headerlink" href="#pysaucy.Graph" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>The <em>adjacency_list</em> must have length n (number of nodes) and <code class="docutils literal"><span class="pre">adjacency_list[i]</span></code> contains
+an iterable of node ids to which an edge exists.</p>
+<p>If <em>directed</em> is False, the adjacency list will be transformed so that for each node id
+i holds <code class="docutils literal"><span class="pre">i</span> <span class="pre">&lt;=</span> <span class="pre">min(adjacency_list[i])</span></code>. I.e. only the right upper triangular matrix is
+saved.</p>
+<p>If <em>directed</em> is True, each edge in the adjacency list will be interpreted as directed edge.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hint</p>
+<p class="last">Saucy natively supports loops in graphs. So having loops simply means that
+<code class="docutils literal"><span class="pre">i</span> <span class="pre">in</span> <span class="pre">adjacency_list[i]</span></code> is True.
+You can check if the graph has loops using the corresponding property.</p>
+</div>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first last simple">
+<li><strong>adjacency_list</strong> – An iterable of <em>n</em> entries, each an iterable of adjacent node ids</li>
+<li><strong>directed</strong> – (Optional) Does the adjacency list describe a directed graph?</li>
+</ul>
+</td>
+</tr>
+</tbody>
+</table>
+<dl class="attribute">
+<dt id="pysaucy.Graph.adjacency_list">
+<code class="descname">adjacency_list</code><a class="headerlink" href="#pysaucy.Graph.adjacency_list" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return the (possibly transformed, see <code class="xref py py-func docutils literal"><span class="pre">pysaucy.graph.Graph.__init__()</span></code>)
+adjacency list.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">List of length <span class="math">\(n\)</span> of lists of adjacent node ids.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysaucy.Graph.directed">
+<code class="descname">directed</code><a class="headerlink" href="#pysaucy.Graph.directed" title="Permalink to this definition">¶</a></dt>
+<dd><p>Is this graph directed?</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True | False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysaucy.Graph.has_loops">
+<code class="descname">has_loops</code><a class="headerlink" href="#pysaucy.Graph.has_loops" title="Permalink to this definition">¶</a></dt>
+<dd><p>Has the graph loops?</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True | False</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysaucy.Graph.m">
+<code class="descname">m</code><a class="headerlink" href="#pysaucy.Graph.m" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of edges <span class="math">\(m\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><span class="math">\(m\)</span></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="pysaucy.Graph.n">
+<code class="descname">n</code><a class="headerlink" href="#pysaucy.Graph.n" title="Permalink to this definition">¶</a></dt>
+<dd><p>Number of nodes <span class="math">\(n\)</span></p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body"><span class="math">\(n\)</span></td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="pysaucy.run_saucy">
+<code class="descclassname">pysaucy.</code><code class="descname">run_saucy</code><span class="sig-paren">(</span><em>g</em>, <em>colors=None</em>, <em>on_automorphism=None</em><span class="sig-paren">)</span><a class="headerlink" href="#pysaucy.run_saucy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Make the saucy call.</p>
+<div class="admonition warning">
+<p class="first admonition-title">Warning</p>
+<p class="last">Using the <em>on_automorphism</em> callback is quite expensive and will slow down the algorithm
+significantly if many generators are found.</p>
+</div>
+<p>The automorphism group size is defined by <em>group size base</em> <span class="math">\(b\)</span> and
+<em>group size exponent</em> <span class="math">\(e\)</span> as <span class="math">\(b\cdot10^e\)</span>.</p>
+<p>The returned <em>orbits</em> are a list of orbit ids where <code class="docutils literal"><span class="pre">orbits[i]</span></code> is some (integer) orbit id
+and all nodes on the same orbit have the same id.</p>
+<table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>g</strong> – The graph</li>
+<li><strong>colors</strong> – (Optional) A partition of node colors of length <span class="math">\(n\)</span></li>
+<li><strong>on_automorphism</strong> – An optional callback function with signature (graph, permutation, support)</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">(group size base, group size exponent, levels, nodes, bads, number of generators, support, orbits)</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+  <h3><a href="index.html">Table Of Contents</a></h3>
+  <ul>
+<li><a class="reference internal" href="#">pysaucy</a><ul>
+<li><a class="reference internal" href="#module-pysaucy">Module contents</a></li>
+</ul>
+</li>
+</ul>
+
+  <h4>Previous topic</h4>
+  <p class="topless"><a href="modules.html"
+                        title="previous chapter">Modules</a></p>
+  <h4>Next topic</h4>
+  <p class="topless"><a href="examples.html"
+                        title="next chapter">pysaucy.examples</a></p>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/pysaucy.rst.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="related" role="navigation" aria-label="related navigation">
+      <h3>Navigation</h3>
+      <ul>
+        <li class="right" style="margin-right: 10px">
+          <a href="genindex.html" title="General Index"
+             >index</a></li>
+        <li class="right" >
+          <a href="py-modindex.html" title="Python Module Index"
+             >modules</a> |</li>
+        <li class="right" >
+          <a href="examples.html" title="pysaucy.examples"
+             >next</a> |</li>
+        <li class="right" >
+          <a href="modules.html" title="Modules"
+             >previous</a> |</li>
+        <li class="nav-item nav-item-0"><a href="index.html">pysaucy 0.3.1b documentation</a> &#187;</li>
+          <li class="nav-item nav-item-1"><a href="modules.html" >Modules</a> &#187;</li> 
+      </ul>
+    </div>
+    <div class="footer" role="contentinfo">
+        &#169; Copyright 2017, Fabian Ball.
+      Created using <a href="http://sphinx-doc.org/">Sphinx</a> 1.6.5.
+    </div>
+  </body>
+</html>
