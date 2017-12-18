@@ -5,11 +5,7 @@ pysaucy.examples
 Module contents
 ---------------
 
-.. autodata:: pysaucy.examples
-   :annotation:
-
 .. automodule:: pysaucy.examples
     :members:
     :undoc-members:
     :show-inheritance:
-
