@@ -57,6 +57,10 @@ dkms.conf
 *.egg-info*
 build/
 dist/
+docs/doctrees
 
 # Binaries
 *.pyc
+
+# PyCharm
+.idea
