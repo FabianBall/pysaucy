@@ -102,7 +102,7 @@ class TestWrapper(TestCase):
         self.assertTupleEqual(tuple(list(result)[:7]), (3.6287999999999996, 6, 10, 35, 0, 9, 18))
 
     def test_karate(self):
-        karate = pysaucy.examples.karate
+        karate = pysaucy.examples.karate()
         result = pysaucy.run_saucy(karate)
         self.assertEqual(480, result[0] * 10**result[1])
         orbit_sizes = collections.defaultdict(int)
