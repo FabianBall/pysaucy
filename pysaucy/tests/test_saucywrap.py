@@ -109,3 +109,36 @@ class TestWrapper(TestCase):
         for orbit_id in result[7]:
             orbit_sizes[orbit_id] += 1
         self.assertEqual(len(orbit_sizes), 27)
+
+    def test_on_automorphism_callback(self):
+        karate = pysaucy.examples.karate()
+        generators = []
+
+        def on_aut(graph, perm, supp):
+            generators.append(perm)
+
+        result = pysaucy.run_saucy(karate, on_automorphism=on_aut)
+
+        self.assertEqual(result[5], len(generators))
+
+        # Too few parameters
+        def invalid_callback_1(a, b):
+            pass
+
+        with self.assertRaises(RuntimeError):
+            pysaucy.run_saucy(karate, on_automorphism=invalid_callback_1)
+
+        # No parameters
+        def invalid_callback_2():
+            pass
+
+        with self.assertRaises(RuntimeError):
+            pysaucy.run_saucy(karate, on_automorphism=invalid_callback_2)
+
+        # Too many parameters
+        def invalid_callback_3(a, b, c, d):
+            pass
+
+        with self.assertRaises(RuntimeError):
+            pysaucy.run_saucy(karate, on_automorphism=invalid_callback_3)
+

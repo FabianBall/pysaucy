@@ -58,11 +58,10 @@ static void
 free_saucy_data(struct saucy_data *data)
 {
     free(data->orbit_partition);
-
-    if (data->py_callback && data->py_callback != Py_None) {
-        Py_DECREF(data->py_callback);
-    }
-
+    
+    // Decrease ref for the callback. It can be Py_None, 
+    // but such references also need to be deremented
+    Py_DECREF(data->py_callback);
     Py_DECREF(data->py_graph);
 
     free(data);
@@ -221,12 +220,19 @@ on_automorphism(int n, const int *gamma, int k, int *support, void *arg)
         Py_ssize_t i;
 
         permutation = PyList_New(n);
+        perm_support = PyList_New(k);
+        
+        if (!permutation || !perm_support) {
+            PyErr_SetString(PyExc_RuntimeError, "List could not be created.");
+            Py_XDECREF(permutation);
+            Py_XDECREF(perm_support);
+            return 0;
+        }
 
         for (i = 0; i < n; i++) {
             PyList_SetItem(permutation, i, PyInt_FromLong(gamma[i]));
         }
 
-        perm_support = PyList_New(k);
         for (i = 0; i < k; i++) {
             PyList_SetItem(perm_support, i, PyInt_FromLong(support[i]));
         }
