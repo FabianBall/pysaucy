@@ -11,7 +11,7 @@ The source code is available from the authors on request.
 
 Documentation
 -------------
-The documentation can be found under https://fabianball.github.io/pysaucy/html/
+The documentation can be found under https://KIT-IISM-EM.github.io/pysaucy/html/
 
 Changes
 -------
