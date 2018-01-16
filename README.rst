@@ -15,6 +15,10 @@ The documentation can be found under https://KIT-IISM-EM.github.io/pysaucy/html/
 
 Changes
 -------
+0.3.2
+  - Small fixes
+  - Added more tessts
+
 0.3.1
   - Faster orbit partition
   - Karate graph used for test
