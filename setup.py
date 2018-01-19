@@ -21,7 +21,7 @@ setup(
     version='0.3.2b0',
     package_dir={'pysaucy': 'pysaucy'},
     packages=['pysaucy', 'pysaucy.tests'],
-    url='https://github.com/FabianBall/pysaucy',
+    url='https://github.com/KIT-IISM-EM/pysaucy',
     license='MIT',
     author='Fabian Ball',
     author_email='fabian.ball@kit.edu',
