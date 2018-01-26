@@ -18,7 +18,7 @@ saucywrap = Extension('pysaucy.saucywrap',
 
 setup(
     name='pysaucy',
-    version='0.3.2b0',
+    version='0.3.3b0',
     package_dir={'pysaucy': 'pysaucy'},
     packages=['pysaucy', 'pysaucy.tests'],
     url='https://github.com/FabianBall/pysaucy',

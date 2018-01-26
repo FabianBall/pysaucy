@@ -159,7 +159,7 @@ update_orbits(int *global_orbit, const int *perm, int n)
         } else if (touched[i]) {  // The cycle which i is on was already visited
                 continue;
         } else {
-            if (global_orbit[i] > 0) {  // Already colored
+            if (global_orbit[i] >= 0) {  // Already colored
                 oid = global_orbit[i];
             } else {
                 oid = i;
@@ -240,6 +240,10 @@ on_automorphism(int n, const int *gamma, int k, int *support, void *arg)
         ret_val = PyObject_CallFunctionObjArgs(data->py_callback, data->py_graph, permutation, perm_support, NULL);
 
         // Get rid of those references, the callback function must deal with them if needed (aka save an own ref)
+        // XXX: Do we need to Py_DECREF the lists' elements, too?
+        // -> If yes: how can we know, there are no other references to the list, which would mean we "destroy" the 
+        //    references of the elements in the list?!
+        // -> If no: how do the elements' references get Py_DECREF'd?
         Py_DECREF(permutation);
         Py_DECREF(perm_support);
 
