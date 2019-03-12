@@ -1,6 +1,8 @@
 pysaucy
 =======
-A Python binding for the saucy algorithm for the graph automorphism problem
+A Python binding for the saucy algorithm for the graph automorphism problem.
+
+This package is no longer maintained. Have a look at `pysaucy2 <https://github.com/KIT-IISM-EM/pysaucy2>`_.
 
 Install
 -------
@@ -8,6 +10,10 @@ To install, run ``python setup.py install`` and ensure the source code of
 `Saucy <http://vlsicad.eecs.umich.edu/BK/SAUCY/>`_ is found in the
 path ``./saucy``.
 The source code is available from the authors on request.
+
+Known Issues
+------------
+Handling of directed graphs is broken. Look at `pysaucy2 <https://github.com/KIT-IISM-EM/pysaucy2>`_.
 
 Documentation
 -------------
