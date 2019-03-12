@@ -172,6 +172,8 @@ update_orbits(int *global_orbit, const int *perm, int n)
             do {  // Color all nodes on the current cycle
                 if (global_orbit[j] < 0) {  // Not colored yet
                     global_orbit[j] = oid;
+                } else if (global_orbit[j] == oid) {  // Already on the same orbit
+                    ; // NOOP
                 } else {  // Already colored with another orbit id
                     old_oid = global_orbit[j];
                     for (k = 0; k < n; k++) {  // Re-color the nodes which have the 'old' orbit id
@@ -319,7 +321,7 @@ make_graph(PyObject *py_graph, int directed)
 
 	// Adapted from saucyio.c
 	// Creates two new references for the incoming edges
-    ain = aout + (directed ? g->n : 0);
+    ain = aout + (directed ? (g->n+1) : 0);
 	ein = eout + (directed ? g->e : 0);
 
     py_adjacency_list = PyObject_GetAttrString(py_graph, "adjacency_list");
@@ -489,6 +491,7 @@ initialize_color_partition(PyObject *py_colors, int n)
             colors[i] = PyInt_AsInt(item);
             Py_DECREF(item);
 
+            // TODO: Color partition must not have colors >= n and colors be increasing numbers from 0!
             if (colors[i] < 0) {
                 if (!PyErr_Occurred()) {
                     PyErr_SetString(PyExc_ValueError, "Negative colors are not allowed.");
